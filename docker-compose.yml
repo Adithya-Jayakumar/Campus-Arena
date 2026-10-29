@@ -1,6 +1,5 @@
 version: '3.8'
 
-# Module IV.3: Multi-container orchestration for Campus Arena
 services:
   backend:
     build:

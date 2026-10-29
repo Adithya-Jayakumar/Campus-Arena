@@ -8,7 +8,6 @@ import { RolesGuard } from '../auth/guards/roles.guard';
 import { Roles } from '../auth/decorators/roles.decorator';
 
 /**
- * Module III.3 & III.5: GraphQL Resolvers, Schema Queries & Mutations
  */
 @Resolver(() => ArenaModel)
 export class ArenasResolver {

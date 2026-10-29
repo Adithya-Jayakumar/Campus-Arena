@@ -7,7 +7,6 @@ import { WinstonAppLogger } from './common/logger/winston.logger';
 import { AllExceptionsFilter } from './common/filters/http-exception.filter';
 
 async function bootstrap() {
-  // Initialize Sentry for Error Tracking and Performance Optimization (Module IV.4)
   if (process.env.SENTRY_DSN) {
     Sentry.init({
       dsn: process.env.SENTRY_DSN,
@@ -28,7 +27,6 @@ async function bootstrap() {
     },
   });
 
-  // Module II.4: Global Built-in Validation Pipe
   app.useGlobalPipes(
     new ValidationPipe({
       whitelist: true,
@@ -37,7 +35,6 @@ async function bootstrap() {
     }),
   );
 
-  // Module IV.4: Global Exception Filter with Centralized Logging and Sentry
   app.useGlobalFilters(new AllExceptionsFilter());
 
   // Swagger OpenAPI Documentation

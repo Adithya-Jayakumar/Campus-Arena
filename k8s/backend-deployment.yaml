@@ -1,4 +1,3 @@
-# Module IV.3: Kubernetes Backend Deployment & Service with Liveness/Readiness probes
 apiVersion: apps/v1
 kind: Deployment
 metadata:

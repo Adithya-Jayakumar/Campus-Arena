@@ -9,7 +9,6 @@ import { Roles } from '../auth/decorators/roles.decorator';
 import { CurrentUser } from '../auth/decorators/current-user.decorator';
 
 /**
- * Module III.3: GraphQL Resolvers for Campus Events and Tournaments
  */
 @Resolver(() => CampusEventModel)
 export class EventsResolver {

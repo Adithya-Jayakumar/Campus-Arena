@@ -1,5 +1,4 @@
 # Multi-stage Dockerfile for Campus Arena Backend
-# Module IV.3: Kubernetes for Deployment & Container Orchestration
 
 # Stage 1: Build
 FROM node:20-alpine AS builder

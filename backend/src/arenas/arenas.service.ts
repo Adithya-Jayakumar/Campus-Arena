@@ -3,7 +3,6 @@ import { PrismaService } from '../prisma/prisma.service';
 import { CreateArenaDto } from './dto/arena.dto';
 
 /**
- * Module II.2 & II.3: Service Provider with Dependency Injection
  */
 @Injectable()
 export class ArenasService {

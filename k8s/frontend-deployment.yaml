@@ -1,4 +1,3 @@
-# Module IV.3: Kubernetes Frontend Deployment & Service
 apiVersion: apps/v1
 kind: Deployment
 metadata:

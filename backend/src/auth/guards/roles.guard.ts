@@ -4,7 +4,6 @@ import { GqlExecutionContext } from '@nestjs/graphql';
 import { ROLES_KEY } from '../decorators/roles.decorator';
 
 /**
- * Module II.5: Security - Role-Based Access Control (RBAC) Guard
  */
 @Injectable()
 export class RolesGuard implements CanActivate {

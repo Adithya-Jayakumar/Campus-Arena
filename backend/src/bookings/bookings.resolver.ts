@@ -8,7 +8,6 @@ import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 import { CurrentUser } from '../auth/decorators/current-user.decorator';
 
 /**
- * Module III.3 & III.5: GraphQL Resolvers, Queries, and Mutations
  */
 @Resolver(() => BookingModel)
 @UseGuards(JwtAuthGuard)

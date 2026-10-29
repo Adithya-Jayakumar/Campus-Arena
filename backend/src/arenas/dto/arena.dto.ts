@@ -2,7 +2,6 @@ import { InputType, Field, Int } from '@nestjs/graphql';
 import { IsNotEmpty, IsString, IsInt, IsBoolean, IsUrl, IsOptional } from 'class-validator';
 
 /**
- * Module III.4: Defining GraphQL Input Types & DTO Validation
  */
 @InputType('CreateArenaInput')
 export class CreateArenaDto {

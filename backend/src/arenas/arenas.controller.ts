@@ -16,7 +16,6 @@ import { RolesGuard } from '../auth/guards/roles.guard';
 import { Roles } from '../auth/decorators/roles.decorator';
 
 /**
- * Module II.2 & II.4: REST Controller & Validation Pipes
  */
 @Controller('arenas')
 export class ArenasController {

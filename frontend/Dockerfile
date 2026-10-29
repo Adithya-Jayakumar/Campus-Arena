@@ -1,5 +1,4 @@
 # Multi-stage Dockerfile for Next.js 14 Frontend
-# Module IV.3: Kubernetes Deployment & Container Orchestration
 
 # Stage 1: Dependencies
 FROM node:20-alpine AS deps

@@ -16,7 +16,6 @@ import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 import { CurrentUser } from '../auth/decorators/current-user.decorator';
 
 /**
- * Module II.4: Built-in vs Custom Pipes demonstration in REST Controllers
  */
 @Controller('bookings')
 @UseGuards(JwtAuthGuard)

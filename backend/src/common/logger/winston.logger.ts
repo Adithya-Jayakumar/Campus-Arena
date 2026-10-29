@@ -2,7 +2,6 @@ import { LoggerService } from '@nestjs/common';
 import * as winston from 'winston';
 
 /**
- * Module IV.5: Centralized Log Management & Structured Logging
  * Implements Winston with JSON formatting, timestamps, log levels and APM-ready metadata
  */
 export class WinstonAppLogger implements LoggerService {

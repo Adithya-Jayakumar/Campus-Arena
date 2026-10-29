@@ -4,7 +4,6 @@ import { ExtractJwt, Strategy } from 'passport-jwt';
 import { PrismaService } from '../prisma/prisma.service';
 
 /**
- * Module II.5: Security - JWT Authentication Strategy
  */
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {

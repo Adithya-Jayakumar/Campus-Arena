@@ -2,7 +2,6 @@ import { Controller, Get } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
 
 /**
- * Module IV.1 & IV.2: Metrics, Observability & APM Monitoring Endpoints
  * Provides health checks and Prometheus-compatible metrics for Kubernetes probes and APM tools
  */
 @Controller()

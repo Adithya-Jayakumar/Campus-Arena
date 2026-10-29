@@ -1,5 +1,4 @@
 // Prisma Schema for Campus Arena
-// Supports Module III: Cloud Integration & Relational Data Modeling
 
 generator client {
   provider = "prisma-client-js"

@@ -1,7 +1,6 @@
 import { ObjectType, Field, ID, Int } from '@nestjs/graphql';
 
 /**
- * Module III.3 & III.4: GraphQL Object Type for Arena Facility
  */
 @ObjectType('Arena')
 export class ArenaModel {

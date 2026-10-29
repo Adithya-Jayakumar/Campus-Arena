@@ -1,59 +1,18 @@
 # 🏟️ CAMPUS ARENA
 ### Modern Campus Sports, Facility & Cultural Arena Management Platform
-> **Course**: Web Technologies (CSE)  
 > **Institution**: Sahrdaya College of Engineering and Technology (Autonomous)  
-> **Department**: Department of Computer Science & Engineering  
 > **Architecture**: Next.js 14 (App Router) + NestJS + GraphQL (Apollo) + Prisma ORM + Docker & Kubernetes + Sentry & Winston
 
 ---
 
-## 📖 Executive Summary & What This Project Does
+## 📖 Executive Summary
 
-**Campus Arena** is an enterprise-grade web application built to digitize and automate facility bookings and tournament management across college campuses:
+**Campus Arena** is an enterprise-grade digital platform engineered to unify and streamline campus facility bookings, sports tournaments, hackathons, and cultural fests:
 - **Facility & Court Reservations**: Real-time reservation for badminton courts, FIFA-standard football turf, cricket nets, robotics lab, and auditoriums with **instant slot conflict detection**.
-- **Digital Arena Passes**: Generates verified entry badges with unique pass IDs for students and faculty.
-- **Tournaments & Campus Fests**: Team registration for inter-department leagues, hackathons, and cultural meets with automatic capacity caps.
-- **Live Leaderboard & Standings**: Real-time points tally, medal tracking (Gold, Silver, Bronze), and live match score tracking for the annual Rolling Trophy.
-- **Role-Based Access Control (RBAC)**: Fine-grained permissions for Students, Faculty Coordinators, and Facility Administrators.
-
----
-
-## 🎯 Syllabus Module-to-Code Mapping
-
-Every single unit of your **Web Technologies** curriculum is implemented directly in the codebase:
-
-```
-┌────────────────────────────────────────────────────────────────────────┐
-│                        WEB TECHNOLOGIES SYLLABUS                       │
-├────────────────────────────────────────────────────────────────────────┤
-│ Module I: Modern Frontend Development                                  │
-│  ├── 1.1 Modern Frontend Architecture  ──> Next.js 14 App Router       │
-│  ├── 1.2 Next.js Pages, Routing, SSR   ──> frontend/app/arenas, events │
-│  ├── 1.3 CSS & Asset Optimization      ──> next/image, next/font Inter │
-│  ├── 1.4 Metadata Management           ──> generateMetadata & OG tags  │
-│  └── 1.5 Tailwind CSS                  ──> Responsive Dark Glassmorphism│
-├────────────────────────────────────────────────────────────────────────┤
-│ Module II: Backend Development with NestJS                             │
-│  ├── 2.1 & 2.2 Modules, Controllers    ──> backend/src/arenas, bookings│
-│  ├── 2.3 Dependency Injection (DI)     ──> PrismaService, Providers    │
-│  ├── 2.4 Built-in vs. Custom Pipes     ──> BookingValidationPipe       │
-│  └── 2.5 Security: Auth & JWT RBAC     ──> JwtAuthGuard, RolesGuard    │
-├────────────────────────────────────────────────────────────────────────┤
-│ Module III: APIs and Cloud Integration                                 │
-│  ├── 3.1 REST vs GraphQL Overview      ──> Dual REST + GraphQL APIs    │
-│  ├── 3.2 Cloud Database Integration    ──> Prisma ORM + Relational DB  │
-│  ├── 3.3 GraphQL Schema & Resolvers    ──> @nestjs/graphql & Apollo    │
-│  ├── 3.4 Object Types & Input Types    ──> ArenaModel, CreateBookingDto│
-│  └── 3.5 GraphQL Queries & Mutations   ──> arenas, createBooking, etc. │
-├────────────────────────────────────────────────────────────────────────┤
-│ Module IV: DevOps, CI/CD and Observability                             │
-│  ├── 4.1 Monitoring, Metrics, Tracing  ──> /health and /metrics APM    │
-│  ├── 4.2 Monitoring Tools & APM        ──> Prometheus exposition format│
-│  ├── 4.3 Kubernetes & Automated Scaling──> k8s/ manifests + HPA        │
-│  ├── 4.4 CI/CD & Error Tracking Sentry ──> .github/workflows + Sentry  │
-│  └── 4.5 Centralized Log Management    ──> Winston JSON Logger         │
-└────────────────────────────────────────────────────────────────────────┘
-```
+- **1-Click Tournament Enrollment**: Fast enrollment with student department selection (CSE, ECE, BME, MECH, etc.).
+- **Live Department Leaderboard**: Real-time points tally, medal tracking (Gold, Silver, Bronze), and live match scores for the Annual Campus Rolling Trophy.
+- **Admin Tournament Control Center**: Centralized administrative tools to create, edit, close tournaments, and award points to departments.
+- **Role-Based Access Control (RBAC)**: Secure access separation for Students and Administrators via JWT tokens.
 
 ---
 
@@ -64,7 +23,7 @@ flowchart TD
     Client["Next.js 14 Client App (Port 3000)\nTailwind CSS • Server & Client Components"]
     
     subgraph K8sCluster["Kubernetes Cluster / Docker Orchestration"]
-        Ingress["Nginx Ingress Controller (arena.sahrdaya.edu)"]
+        Ingress["Nginx Ingress Controller"]
         HPA["Horizontal Pod Autoscaler (HPA)\nTarget: 70% CPU (2 to 10 Replicas)"]
         
         subgraph BackendPods["NestJS API Replicas (Port 4000)"]
@@ -100,7 +59,7 @@ erDiagram
         string id PK
         string email UK
         string name
-        string role "STUDENT | FACULTY | ADMIN"
+        string role "STUDENT | ADMIN"
         string department
         string studentId
     }
@@ -151,28 +110,25 @@ erDiagram
 
 ---
 
-## 🔑 Default Credentials for Evaluation
+## 🔑 Default Accounts
 
-The database is pre-seeded with three distinct accounts demonstrating Role-Based Access Control (RBAC):
+The database comes pre-configured with accounts for demonstration:
 
-| Role | Email | Password | Allowed Capabilities |
+| Role | Email | Password | Capabilities |
 | :--- | :--- | :--- | :--- |
-| **Student** | `student@campusarena.edu` | `student123` | Book arenas, view passes, cancel own bookings, register tournament teams |
-| **Faculty Coordinator** | `coordinator.cse@campusarena.edu` | `faculty123` | Create tournaments/fests, approve arena slots, cancel student bookings |
-| **Facility Admin** | `admin@campusarena.edu` | `admin123` | Create new arenas, delete facilities, view all logs, access telemetry |
+| **Student** | `student@campusarena.edu` | `student123` | Book arenas, enroll in tournaments, select department, view passes |
+| **Admin** | `admin@campusarena.edu` | `admin123` | Add/delete tournaments, award department points, monitor telemetry |
 
 ---
 
-## 🚀 Step-by-Step Quickstart Guide
+## 🚀 Setup & Execution Guide
 
 ### 1. Prerequisites
-- **Node.js**: v18+ or v20+ (Node v22 detected and verified)
+- **Node.js**: v18+ or v20+
 - **Git**
 - Optional: **Docker** & **Docker Compose**
 
-### 2. Setup the NestJS Backend
-Open a terminal in the project directory:
-
+### 2. Run the Backend API
 ```bash
 cd backend
 npm install
@@ -181,33 +137,30 @@ npm run prisma:push
 npm run prisma:seed
 npm run start:dev
 ```
-Backend will start at:
-- **API Endpoint**: `http://localhost:4000`
-- **Swagger REST Docs**: `http://localhost:4000/api/docs`
-- **Apollo GraphQL Playground**: `http://localhost:4000/graphql`
-- **Health & Telemetry Metrics**: `http://localhost:4000/health`
+Backend services:
+- **API Server**: `http://localhost:4000`
+- **Swagger Documentation**: `http://localhost:4000/api/docs`
+- **GraphQL Apollo Playground**: `http://localhost:4000/graphql`
+- **Health Telemetry**: `http://localhost:4000/health`
 
-### 3. Setup the Next.js Frontend
-Open a second terminal:
-
+### 3. Run the Frontend Web Portal
 ```bash
 cd frontend
 npm install
 npm run dev
 ```
-Frontend will be live at:
-- **Web App**: `http://localhost:3000`
+Open **`http://localhost:3000`** in your browser.
 
 ---
 
-## 🐳 Docker & Kubernetes Deployment (Module IV)
+## 🐳 Docker & Kubernetes Deployment
 
-### Running with Docker Compose:
+### Multi-Container Docker Compose
 ```bash
 docker-compose up --build
 ```
 
-### Deploying to Kubernetes:
+### Kubernetes Cluster Deployment
 ```bash
 kubectl apply -f k8s/namespace.yaml
 kubectl apply -f k8s/backend-deployment.yaml
@@ -218,40 +171,13 @@ kubectl apply -f k8s/ingress.yaml
 
 ---
 
-## 🧪 Testing & Demonstration for Lab Viva
+## 🧪 Key Technical Highlights
 
-### 1. Test Custom Request Validation Pipe (Module II.4)
-Try submitting a booking where `endTime` is before `startTime` or duration exceeds 4 hours.
-`BookingValidationPipe` catches the bad request before it touches the database and outputs:
-```json
-{
-  "statusCode": 400,
-  "error": { "message": "Booking slot startTime must be before endTime" }
-}
-```
-
-### 2. Test Conflict Detection (Double-Booking Prevention)
-Attempt to reserve a time slot that overlaps with an existing booking. The service throws an HTTP 409 Conflict:
-```json
-{
-  "statusCode": 409,
-  "error": { "message": "Slot collision: Arena is already reserved during this window." }
-}
-```
-
-### 3. Test GraphQL Resolvers (Module III.3 & III.5)
-Visit `http://localhost:4000/graphql` and run:
-```graphql
-query GetCampusArenas {
-  arenas {
-    id
-    name
-    category
-    location
-    capacity
-  }
-}
-```
-
-### 4. Test Sentry & Health Observability (Module IV.1 & IV.4)
-Visit `http://localhost:4000/health` or `/metrics` to view uptime, Node.js memory heap usage, database latency, and APM Prometheus metrics.
+1. **Custom Request Validation Pipe**:
+   - `BookingValidationPipe` verifies chronological consistency (`startTime < endTime`), duration limits (30 min to 4 hours), and sanitizes ISO timestamps.
+2. **Double-Booking Conflict Prevention**:
+   - Time-window overlap query ensures no two teams can reserve the same arena at the same time.
+3. **Dual REST & GraphQL Architecture**:
+   - REST endpoints with Swagger OpenAPI docs alongside code-first Apollo GraphQL queries & mutations.
+4. **Structured Logging & Telemetry**:
+   - Winston logger with JSON formatting, Sentry exception filter, and Prometheus-compatible metrics endpoint.

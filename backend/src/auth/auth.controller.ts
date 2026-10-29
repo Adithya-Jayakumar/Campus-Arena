@@ -5,7 +5,6 @@ import { JwtAuthGuard } from './guards/jwt-auth.guard';
 import { CurrentUser } from './decorators/current-user.decorator';
 
 /**
- * Module II: Auth Controller handling REST endpoints for authentication
  */
 @Controller('auth')
 export class AuthController {

@@ -4,7 +4,6 @@ import { useEffect } from 'react';
 import { AlertTriangle, RotateCcw } from 'lucide-react';
 
 /**
- * Module I.2: Error Handling using Next.js error boundary
  */
 export default function ErrorBoundary({
   error,

@@ -7,7 +7,6 @@ import {
 import { CreateBookingDto } from '../dto/booking.dto';
 
 /**
- * Module II.4: Custom Pipe in NestJS Request Lifecycle
  * Intercepts incoming parameters/body before reaching Controller or Resolver,
  * validates chronological consistency, minimum/maximum duration, and sanitizes input.
  */

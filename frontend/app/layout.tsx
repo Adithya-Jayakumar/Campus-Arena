@@ -4,14 +4,12 @@ import './globals.css';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
-// Module I.3: Font Optimization via next/font/google
 const inter = Inter({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-inter',
 });
 
-// Module I.4: Metadata Management using Next.js
 export const metadata: Metadata = {
   title: 'Campus Arena | Sahrdaya Sports & Facility Portal',
   description:

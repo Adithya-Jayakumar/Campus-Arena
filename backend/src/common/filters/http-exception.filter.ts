@@ -10,7 +10,6 @@ import { Request, Response } from 'express';
 import * as Sentry from '@sentry/node';
 
 /**
- * Module IV.4 & IV.5: Error Tracking & Performance Optimization using Sentry
  * Intercepts unhandled and HTTP exceptions, logs to Winston, and pushes breadcrumbs/errors to Sentry
  */
 @Catch()
