@@ -1,0 +1,138 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Arena {
+  capacity: Int!
+  category: String!
+  closingTime: String!
+  createdAt: DateTime!
+  description: String!
+  id: ID!
+  imageUrl: String!
+  isIndoor: Boolean!
+  location: String!
+  name: String!
+  openingTime: String!
+}
+
+type Booking {
+  arena: Arena
+  createdAt: DateTime!
+  endTime: DateTime!
+  id: ID!
+  purpose: String!
+  startTime: DateTime!
+  status: String!
+  title: String!
+  user: BookingUser
+}
+
+type BookingUser {
+  department: String!
+  email: String!
+  id: ID!
+  name: String!
+}
+
+type CampusEvent {
+  bannerUrl: String!
+  category: String!
+  description: String!
+  endDate: DateTime!
+  id: ID!
+  maxTeams: Int!
+  registrations: [EventRegistration!]
+  rules: String
+  startDate: DateTime!
+  title: String!
+  venue: String!
+}
+
+input CreateArenaInput {
+  capacity: Int!
+  category: String!
+  closingTime: String! = "21:00"
+  description: String!
+  imageUrl: String!
+  isIndoor: Boolean! = false
+  location: String!
+  name: String!
+  openingTime: String! = "06:00"
+}
+
+input CreateBookingInput {
+  arenaId: ID!
+  endTime: String!
+  purpose: String!
+  startTime: String!
+  title: String!
+}
+
+input CreateEventInput {
+  bannerUrl: String!
+  category: String!
+  description: String!
+  endDate: String!
+  maxTeams: Int! = 16
+  rules: String
+  startDate: String!
+  title: String!
+  venue: String!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type EventRegistration {
+  id: ID!
+  membersCount: Int!
+  registeredAt: DateTime!
+  status: String!
+  teamName: String!
+}
+
+type Mutation {
+  """Cancel an existing reservation"""
+  cancelBooking(id: ID!): Booking!
+
+  """Admin: Add a new arena or sports court"""
+  createArena(input: CreateArenaInput!): Arena!
+
+  """Reserve a campus facility or sports court"""
+  createBooking(input: CreateBookingInput!): Booking!
+
+  """Coordinator/Admin: Create a campus tournament or fest"""
+  createEvent(input: CreateEventInput!): CampusEvent!
+
+  """Student: Register team for a tournament"""
+  registerEventTeam(input: RegisterEventInput!): EventRegistration!
+}
+
+type Query {
+  """Admin/Faculty: View all reservations"""
+  allBookings(status: String): [Booking!]!
+
+  """Retrieve arena details by ID"""
+  arena(id: ID!): Arena!
+
+  """Fetch all campus arenas and facilities"""
+  arenas(category: String): [Arena!]!
+
+  """Get event by ID with registrations"""
+  campusEvent(id: ID!): CampusEvent!
+
+  """List upcoming tournaments and fests"""
+  campusEvents(category: String): [CampusEvent!]!
+
+  """Retrieve the logged in user bookings"""
+  myBookings: [Booking!]!
+}
+
+input RegisterEventInput {
+  eventId: ID!
+  membersCount: Int! = 1
+  teamName: String!
+}

@@ -1,0 +1,27 @@
+# Module IV.3: Horizontal Pod Autoscaler (HPA) for Automated Scaling
+# Automatically scales pods between 2 and 10 replicas when CPU exceeds 70% during tournament traffic peaks
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: arena-backend-hpa
+  namespace: campus-arena
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: arena-backend
+  minReplicas: 2
+  maxReplicas: 10
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 70
+    - type: Resource
+      resource:
+        name: memory
+        target:
+          type: Utilization
+          averageUtilization: 80

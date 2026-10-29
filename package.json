@@ -1,0 +1,25 @@
+{
+  "name": "campus-arena-workspace",
+  "version": "1.0.0",
+  "description": "Campus Arena - Sports, Facility & Cultural Arena Management Platform (Web Technologies)",
+  "scripts": {
+    "install:all": "npm --prefix backend install && npm --prefix frontend install",
+    "backend:dev": "npm --prefix backend run start:dev",
+    "backend:seed": "npm --prefix backend run prisma:push && npm --prefix backend run prisma:seed",
+    "frontend:dev": "npm --prefix frontend run dev",
+    "docker:up": "docker-compose up --build",
+    "docker:down": "docker-compose down"
+  },
+  "keywords": [
+    "nextjs",
+    "nestjs",
+    "graphql",
+    "prisma",
+    "kubernetes",
+    "docker",
+    "sentry",
+    "winston",
+    "web-technologies"
+  ],
+  "author": "Department of Computer Science & Engineering"
+}

@@ -1,0 +1,35 @@
+# Module IV.3: Ingress controller routing
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: arena-ingress
+  namespace: campus-arena
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+spec:
+  rules:
+    - host: arena.sahrdaya.edu
+      http:
+        paths:
+          - path: /api
+            pathType: Prefix
+            backend:
+              service:
+                name: arena-backend-svc
+                port:
+                  number: 4000
+          - path: /graphql
+            pathType: Prefix
+            backend:
+              service:
+                name: arena-backend-svc
+                port:
+                  number: 4000
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: arena-frontend-svc
+                port:
+                  number: 3000
